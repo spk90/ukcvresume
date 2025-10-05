@@ -2,6 +2,7 @@ import { CVProvider } from "@/contexts/CVContext";
 // Editor and preview moved to Builder page
 import { Navigation } from "@/components/Navigation";
 import { Sidebar } from "@/components/Sidebar";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -25,11 +26,11 @@ const Index = () => {
                     modern templates, and one-click export. No sign-up required.
                   </p>
                   <div className="mt-6 flex items-center justify-center gap-3">
-                    <a href="/builder" className="inline-flex">
+                    <Link to="/builder" className="inline-flex">
                       <span className="inline-flex items-center rounded-lg bg-primary px-4 py-2 text-primary-foreground font-medium shadow hover:opacity-90 transition">
                         Build Resume
                       </span>
-                    </a>
+                    </Link>
                     <a href="#features" className="inline-flex">
                       <span className="inline-flex items-center rounded-lg border border-border px-4 py-2 font-medium hover:bg-muted/60 transition">
                         See features

@@ -1,6 +1,7 @@
 import { FileText, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
+import { Link } from "react-router-dom";
 
 export const Navigation = () => {
   const { theme, setTheme } = useTheme();
@@ -9,7 +10,7 @@ export const Navigation = () => {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Brand */}
-        <a href="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary/80">
             <FileText className="h-5 w-5 text-primary-foreground" />
           </div>
@@ -17,7 +18,7 @@ export const Navigation = () => {
             <h1 className="text-lg font-bold text-foreground">ukcvresume</h1>
             <p className="text-xs text-muted-foreground">ukcvresume.co.uk</p>
           </div>
-        </a>
+        </Link>
 
         {/* Center Nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
@@ -27,24 +28,24 @@ export const Navigation = () => {
           >
             Features
           </a>
-          <a
-            href="/builder#templates"
+          <Link
+            to="/builder#templates"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Templates
-          </a>
-          <a
-            href="/builder"
+          </Link>
+          <Link
+            to="/builder"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Editor
-          </a>
-          <a
-            href="/builder#export"
+          </Link>
+          <Link
+            to="/builder#export"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Export
-          </a>
+          </Link>
         </nav>
 
         {/* Actions */}
@@ -57,7 +58,7 @@ export const Navigation = () => {
             <a href="/#features">Explore</a>
           </Button>
           <Button asChild className="rounded-lg">
-            <a href="/builder">Build Resume</a>
+            <Link to="/builder">Build Resume</Link>
           </Button>
           <Button
             variant="ghost"
