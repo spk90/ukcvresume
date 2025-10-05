@@ -1,0 +1,13 @@
+{
+  "name": "ukcvresume",
+  "short_name": "ukcvresume",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0b0c",
+  "theme_color": "#0b0b0c",
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "48x48 64x64 96x96", "type": "image/x-icon" }
+  ]
+}
+
+
