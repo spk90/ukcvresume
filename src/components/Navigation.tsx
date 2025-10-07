@@ -29,7 +29,7 @@ export const Navigation = () => {
             Features
           </a>
           <Link
-            to="/builder#templates"
+            to="/builder"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Templates
@@ -41,7 +41,7 @@ export const Navigation = () => {
             Editor
           </Link>
           <Link
-            to="/builder#export"
+            to="/builder"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             Export

@@ -7,8 +7,14 @@ import { SkillsForm } from "@/components/CVForm/SkillsForm";
 import { TemplateSelector } from "@/components/TemplateSelector";
 import { CVPreview } from "@/components/CVPreview/CVPreview";
 import { Navigation } from "@/components/Navigation";
+import { Sidebar } from "@/components/Sidebar";
+import { VersionManager } from "@/components/VersionManager";
+import { CVAnalytics } from "@/components/CVAnalytics";
+import { CVTemplates } from "@/components/CVTemplates";
+import { ExportOptions } from "@/components/ExportOptions";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect } from "react";
 
 const BuilderHeader = () => {
@@ -108,53 +114,81 @@ const Builder = () => {
       <div className="min-h-screen bg-background">
         <Navigation />
 
-        <main className="flex-1 w-full">
-          <BuilderHeader />
-          <div className="container mx-auto px-4 lg:px-8 py-8">
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-              {/* Form Section */}
-              <div className="space-y-6 animate-fade-in">
-                <div>
-                  <h2 className="text-2xl font-bold text-foreground mb-2">
-                    Editor
-                  </h2>
-                  <p className="text-muted-foreground">
-                    Fill in your details to create a professional UK-standard CV
-                  </p>
-                </div>
+        <div className="flex w-full">
+          <Sidebar />
 
-                <div className="glass-effect p-6 rounded-xl card-hover">
-                  <PersonalDetailsForm />
-                </div>
+          <main className="flex-1 w-full">
+            <BuilderHeader />
+            <div className="container mx-auto px-4 lg:px-8 py-8">
+              <Tabs defaultValue="editor" className="space-y-6">
+                <TabsList className="grid w-full grid-cols-5">
+                  <TabsTrigger value="editor">Editor</TabsTrigger>
+                  <TabsTrigger value="templates">Templates</TabsTrigger>
+                  <TabsTrigger value="analytics">Analytics</TabsTrigger>
+                  <TabsTrigger value="versions">Versions</TabsTrigger>
+                  <TabsTrigger value="export">Export</TabsTrigger>
+                </TabsList>
 
-                <div className="glass-effect p-6 rounded-xl card-hover">
-                  <ProfessionalSummaryForm />
-                </div>
+                <TabsContent value="editor" className="space-y-6">
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                    {/* Form Section */}
+                    <div className="space-y-6 animate-fade-in">
+                      <div>
+                        <h2 className="text-2xl font-bold text-foreground mb-2">
+                          CV Editor
+                        </h2>
+                        <p className="text-muted-foreground">
+                          Fill in your details to create a professional UK-standard CV
+                        </p>
+                      </div>
 
-                <div className="glass-effect p-6 rounded-xl card-hover">
-                  <WorkExperienceForm />
-                </div>
+                      <div className="glass-effect p-6 rounded-xl card-hover">
+                        <PersonalDetailsForm />
+                      </div>
 
-                <div className="glass-effect p-6 rounded-xl card-hover">
-                  <EducationForm />
-                </div>
+                      <div className="glass-effect p-6 rounded-xl card-hover">
+                        <ProfessionalSummaryForm />
+                      </div>
 
-                <div className="glass-effect p-6 rounded-xl card-hover">
-                  <SkillsForm />
-                </div>
+                      <div className="glass-effect p-6 rounded-xl card-hover">
+                        <WorkExperienceForm />
+                      </div>
 
-                <div className="glass-effect p-6 rounded-xl card-hover">
-                  <TemplateSelector />
-                </div>
-              </div>
+                      <div className="glass-effect p-6 rounded-xl card-hover">
+                        <EducationForm />
+                      </div>
 
-              {/* Preview Section */}
-              <div className="xl:sticky xl:top-24 xl:self-start animate-fade-in">
-                <CVPreview />
-              </div>
+                      <div className="glass-effect p-6 rounded-xl card-hover">
+                        <SkillsForm />
+                      </div>
+                    </div>
+
+                    {/* Preview Section */}
+                    <div className="xl:sticky xl:top-24 xl:self-start animate-fade-in">
+                      <CVPreview />
+                    </div>
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="templates" className="space-y-6">
+                  <CVTemplates />
+                </TabsContent>
+
+                <TabsContent value="analytics" className="space-y-6">
+                  <CVAnalytics />
+                </TabsContent>
+
+                <TabsContent value="versions" className="space-y-6">
+                  <VersionManager />
+                </TabsContent>
+
+                <TabsContent value="export" className="space-y-6">
+                  <ExportOptions />
+                </TabsContent>
+              </Tabs>
             </div>
-          </div>
-        </main>
+          </main>
+        </div>
       </div>
     </CVProvider>
   );

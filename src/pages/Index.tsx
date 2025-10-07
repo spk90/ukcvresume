@@ -1,7 +1,6 @@
 import { CVProvider } from "@/contexts/CVContext";
 // Editor and preview moved to Builder page
 import { Navigation } from "@/components/Navigation";
-import { Sidebar } from "@/components/Sidebar";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -10,10 +9,7 @@ const Index = () => {
       <div className="min-h-screen bg-background">
         <Navigation />
 
-        <div className="flex w-full">
-          <Sidebar />
-
-          <main className="flex-1 w-full">
+        <main className="w-full">
             {/* Hero */}
             <section className="border-b border-border/40 bg-gradient-to-b from-background to-muted/30">
               <div className="container mx-auto px-4 lg:px-8 py-12">
@@ -80,6 +76,80 @@ const Index = () => {
                 </div>
               </section>
 
+              {/* Testimonials */}
+              <section className="py-12">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-foreground mb-2">
+                    Trusted by Job Seekers
+                  </h2>
+                  <p className="text-muted-foreground">
+                    See what our users say about their experience
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="p-6 rounded-xl border border-border/40 bg-card/50">
+                    <div className="flex items-center gap-1 mb-3">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-yellow-400">★</span>
+                      ))}
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      "This CV builder saved me so much time! The templates are professional and the preview is instant."
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                        <span className="text-xs font-medium text-primary">SM</span>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium">Sarah M.</p>
+                        <p className="text-xs text-muted-foreground">Marketing Manager</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6 rounded-xl border border-border/40 bg-card/50">
+                    <div className="flex items-center gap-1 mb-3">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-yellow-400">★</span>
+                      ))}
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      "The analytics feature helped me identify what was missing from my CV. Got 3 interviews in a week!"
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                        <span className="text-xs font-medium text-primary">JD</span>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium">James D.</p>
+                        <p className="text-xs text-muted-foreground">Software Developer</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6 rounded-xl border border-border/40 bg-card/50">
+                    <div className="flex items-center gap-1 mb-3">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-yellow-400">★</span>
+                      ))}
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      "Love the version management! I can try different approaches and keep track of what works best."
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                        <span className="text-xs font-medium text-primary">AL</span>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium">Anna L.</p>
+                        <p className="text-xs text-muted-foreground">Project Manager</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               {/* Editor moved to /builder */}
             </div>
 
@@ -94,7 +164,6 @@ const Index = () => {
               </div>
             </footer>
           </main>
-        </div>
       </div>
     </CVProvider>
   );
