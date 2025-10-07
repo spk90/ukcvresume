@@ -9,6 +9,7 @@ import { CVPreview } from "@/components/CVPreview/CVPreview";
 import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { useState, useEffect } from "react";
 
 const BuilderHeader = () => {
   const { canUndo, canRedo, undo, redo, saveVersion, cvData } = useCVContext();
@@ -60,6 +61,48 @@ const BuilderHeader = () => {
 };
 
 const Builder = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate component loading to ensure content is always present
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="container mx-auto px-4 lg:px-8 py-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h1 className="text-3xl font-bold text-foreground mb-4">CV Builder</h1>
+              <p className="text-muted-foreground">
+                Create professional UK-standard CVs with our easy-to-use builder
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="h-4 bg-muted rounded animate-pulse"></div>
+                <div className="h-4 bg-muted rounded animate-pulse w-3/4"></div>
+                <div className="h-4 bg-muted rounded animate-pulse w-1/2"></div>
+              </div>
+              <div className="space-y-4">
+                <div className="h-4 bg-muted rounded animate-pulse"></div>
+                <div className="h-4 bg-muted rounded animate-pulse w-2/3"></div>
+                <div className="h-4 bg-muted rounded animate-pulse w-3/4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <CVProvider>
       <div className="min-h-screen bg-background">
