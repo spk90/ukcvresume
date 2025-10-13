@@ -10,8 +10,9 @@ import { Navigation } from "@/components/Navigation";
 import { Sidebar } from "@/components/Sidebar";
 import { VersionManager } from "@/components/VersionManager";
 import { CVAnalytics } from "@/components/CVAnalytics";
-import { CVTemplates } from "@/components/CVTemplates";
-import { ExportOptions } from "@/components/ExportOptions";
+import { InteractiveTemplateSelector } from "@/components/InteractiveTemplateSelector";
+import { EnhancedExportOptions } from "@/components/EnhancedExportOptions";
+import { CVCompletionTracker } from "@/components/CVCompletionTracker";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -85,12 +86,14 @@ const Builder = () => {
         <div className="container mx-auto px-4 lg:px-8 py-16">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-foreground mb-4">CV Builder</h1>
+              <h1 className="text-3xl font-bold text-foreground mb-4">
+                CV Builder
+              </h1>
               <p className="text-muted-foreground">
                 Create professional UK-standard CVs with our easy-to-use builder
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div className="h-4 bg-muted rounded animate-pulse"></div>
@@ -121,9 +124,10 @@ const Builder = () => {
             <BuilderHeader />
             <div className="container mx-auto px-4 lg:px-8 py-8">
               <Tabs defaultValue="editor" className="space-y-6">
-                <TabsList className="grid w-full grid-cols-5">
+                <TabsList className="grid w-full grid-cols-6">
                   <TabsTrigger value="editor">Editor</TabsTrigger>
                   <TabsTrigger value="templates">Templates</TabsTrigger>
+                  <TabsTrigger value="progress">Progress</TabsTrigger>
                   <TabsTrigger value="analytics">Analytics</TabsTrigger>
                   <TabsTrigger value="versions">Versions</TabsTrigger>
                   <TabsTrigger value="export">Export</TabsTrigger>
@@ -138,7 +142,8 @@ const Builder = () => {
                           CV Editor
                         </h2>
                         <p className="text-muted-foreground">
-                          Fill in your details to create a professional UK-standard CV
+                          Fill in your details to create a professional
+                          UK-standard CV
                         </p>
                       </div>
 
@@ -171,7 +176,11 @@ const Builder = () => {
                 </TabsContent>
 
                 <TabsContent value="templates" className="space-y-6">
-                  <CVTemplates />
+                  <InteractiveTemplateSelector />
+                </TabsContent>
+
+                <TabsContent value="progress" className="space-y-6">
+                  <CVCompletionTracker />
                 </TabsContent>
 
                 <TabsContent value="analytics" className="space-y-6">
@@ -183,7 +192,7 @@ const Builder = () => {
                 </TabsContent>
 
                 <TabsContent value="export" className="space-y-6">
-                  <ExportOptions />
+                  <EnhancedExportOptions />
                 </TabsContent>
               </Tabs>
             </div>

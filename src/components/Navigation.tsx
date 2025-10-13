@@ -29,22 +29,22 @@ export const Navigation = () => {
             Features
           </a>
           <Link
-            to="/builder"
+            to="/blog"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
-            Templates
+            Blog
+          </Link>
+          <Link
+            to="/help"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Help
           </Link>
           <Link
             to="/builder"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
-            Editor
-          </Link>
-          <Link
-            to="/builder"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Export
+            Builder
           </Link>
         </nav>
 
