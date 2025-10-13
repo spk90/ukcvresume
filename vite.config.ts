@@ -18,4 +18,7 @@ export default defineConfig(({ mode }) => ({
     // Increase or silence chunk size warnings (in kB)
     chunkSizeWarningLimit: 2000,
   },
+  preview: {
+    port: 8080,
+  },
 }));
