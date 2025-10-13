@@ -2,6 +2,7 @@ import { useCVContext } from "@/contexts/CVContext";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { TextLints } from "@/components/TextLints";
+import AIRealTimeFeedback from "@/components/AIRealTimeFeedback";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { suggestSummary } from "@/lib/ai";
@@ -47,6 +48,11 @@ export const ProfessionalSummaryForm = () => {
         <TextLints
           text={cvData.professionalSummary}
           onApplyFix={(t) => updateProfessionalSummary(t)}
+        />
+        <AIRealTimeFeedback
+          content={cvData.professionalSummary}
+          sectionType="summary"
+          onSuggestionApply={(suggestion) => updateProfessionalSummary(suggestion)}
         />
         <p className="text-sm text-muted-foreground">
           Keep it concise - 2-3 sentences highlighting your key achievements and

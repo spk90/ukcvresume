@@ -13,10 +13,47 @@ import { CVAnalytics } from "@/components/CVAnalytics";
 import { InteractiveTemplateSelector } from "@/components/InteractiveTemplateSelector";
 import { EnhancedExportOptions } from "@/components/EnhancedExportOptions";
 import { CVCompletionTracker } from "@/components/CVCompletionTracker";
+import AIResumeOptimizer from "@/components/AIResumeOptimizer";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect } from "react";
+
+const AIResumeOptimizerWrapper = () => {
+  const { cvData, updateCVData } = useCVContext();
+
+  const handleOptimizeSection = (sectionType: string, optimizedContent: string) => {
+    // Handle different section types
+    switch (sectionType) {
+      case 'experience':
+        // Parse and update work experience
+        try {
+          const experience = JSON.parse(optimizedContent);
+          updateCVData({ workExperience: experience });
+        } catch (e) {
+          console.error('Failed to parse experience data');
+        }
+        break;
+      case 'summary':
+        updateCVData({ professionalSummary: optimizedContent });
+        break;
+      default:
+        console.log(`Optimizing ${sectionType}:`, optimizedContent);
+    }
+  };
+
+  const handleUpdateSummary = (newSummary: string) => {
+    updateCVData({ professionalSummary: newSummary });
+  };
+
+  return (
+    <AIResumeOptimizer
+      resumeData={cvData}
+      onOptimizeSection={handleOptimizeSection}
+      onUpdateSummary={handleUpdateSummary}
+    />
+  );
+};
 
 const BuilderHeader = () => {
   const { canUndo, canRedo, undo, redo, saveVersion, cvData } = useCVContext();
@@ -124,8 +161,9 @@ const Builder = () => {
             <BuilderHeader />
             <div className="container mx-auto px-4 lg:px-8 py-8">
               <Tabs defaultValue="editor" className="space-y-6">
-                <TabsList className="grid w-full grid-cols-6">
+                <TabsList className="grid w-full grid-cols-7">
                   <TabsTrigger value="editor">Editor</TabsTrigger>
+                  <TabsTrigger value="ai-optimizer">AI Optimizer</TabsTrigger>
                   <TabsTrigger value="templates">Templates</TabsTrigger>
                   <TabsTrigger value="progress">Progress</TabsTrigger>
                   <TabsTrigger value="analytics">Analytics</TabsTrigger>
@@ -173,6 +211,10 @@ const Builder = () => {
                       <CVPreview />
                     </div>
                   </div>
+                </TabsContent>
+
+                <TabsContent value="ai-optimizer" className="space-y-6">
+                  <AIResumeOptimizerWrapper />
                 </TabsContent>
 
                 <TabsContent value="templates" className="space-y-6">
